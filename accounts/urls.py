@@ -1,7 +1,8 @@
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView, \
     PasswordResetConfirmView, PasswordResetCompleteView
-from django.urls import path
-from django_registration.backends.activation.views import RegistrationView
+from django.urls import path, re_path
+from django.views.generic import TemplateView
+from django_registration.backends.activation.views import RegistrationView, ActivationView
 
 from accounts.forms import CustomUserCreationForm
 
@@ -15,7 +16,18 @@ urlpatterns = [
 
     path('register/', RegistrationView.as_view(success_url='/', form_class=CustomUserCreationForm,
                                                template_name='registration/registration_form.html',
+                                               email_body_template='registration/activation_email.txt',
                                                email_subject_template='registration/activation_email_subject.txt'),
          name='django_registration_register'),
 
+    path('activate/<str:activation_key>/',
+         ActivationView.as_view(template_name='registration/activation_failed.html'),
+         name="django_registration_activate"),
+
+    path('activate/complete/',
+            TemplateView.as_view(
+                template_name="registration/activation_complete.html"
+            ),
+            name="django_registration_activation_complete",
+        ),
 ]

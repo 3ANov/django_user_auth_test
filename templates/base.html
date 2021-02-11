@@ -13,12 +13,10 @@
 {% block extrahead %}
 {% endblock extrahead %}
 </head>
-
 <body>
 
 
 <div class="container-fluid">
-
 	<div class="row align-items-center pt-3 pb-3 px-md-5">
 		<div class="col-sm d-none d-md-block ">
 			Присоединяйтесь!
@@ -51,10 +49,30 @@
 
     {% endif %}
 
-      {% block content %}
-      {% endblock %}
 
+		</div>
+	</div>
+  <div class="row align-items-center pt-3 pb-3 main-logo-shadow">
+	  <div class="col-sm-auto offset-sm-1 mx-auto">
+
+
+
+	</div>
+    <div class="col-sm-6 mx-auto">
+    	<h1 class="main-title text-uppercase">Заголовок</h1>
+    </div>
+  </div>
+
+
+
+  <div class="row pt-3 pb-3">
+    <div class="col mb-3">
+      {% block content %}
+		    {% endblock %}
+    </div>
+  </div>
+  </div>
 
 </body>
-	
+
 </html>

@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
@@ -45,6 +46,10 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_full_name(self):
         return self.email
+
+    def email_user(self, subject, message, from_email=None, **kwargs):
+        """Send an email to this user."""
+        send_mail(subject, message, from_email, [self.email], **kwargs)
 
     def __unicode__(self):
         return self.email
