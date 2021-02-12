@@ -19,15 +19,16 @@ urlpatterns = [
                                                email_body_template='registration/activation_email.txt',
                                                email_subject_template='registration/activation_email_subject.txt'),
          name='django_registration_register'),
-
-    path('activate/<str:activation_key>/',
-         ActivationView.as_view(template_name='registration/activation_failed.html'),
-         name="django_registration_activate"),
-
     path('activate/complete/',
             TemplateView.as_view(
                 template_name="registration/activation_complete.html"
             ),
             name="django_registration_activation_complete",
         ),
+
+    path('activate/<str:activation_key>/',
+         ActivationView.as_view(template_name='registration/activation_failed.html'),
+         name="django_registration_activate"),
+
+
 ]
