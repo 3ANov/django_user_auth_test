@@ -1,6 +1,6 @@
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView, \
     PasswordResetConfirmView, PasswordResetCompleteView
-from django.urls import path, re_path
+from django.urls import path
 from django.views.generic import TemplateView
 from django_registration.backends.activation.views import RegistrationView, ActivationView
 
