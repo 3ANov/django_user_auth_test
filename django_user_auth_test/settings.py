@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'accounts',
     'django_registration',
     'crispy_forms',
-
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -137,3 +137,7 @@ EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = 'info@google.ru'
 AUTH_USER_EMAIL_UNIQUE = True
+
+
+RECAPTCHA_PUBLIC_KEY = ''
+RECAPTCHA_PRIVATE_KEY = ''
