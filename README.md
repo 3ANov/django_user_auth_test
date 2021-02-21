@@ -1,4 +1,4 @@
-Test project which show using django-registration, social-auth-app-django and built-in authentication system.
+Test project which show using **django-registration**, **social-auth-app-django** and built-in authentication system.
 
 _For deployment:_
 1) Clone or download this project from GitHub to folder  
