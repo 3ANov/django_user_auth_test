@@ -1,6 +1,6 @@
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView, \
     PasswordResetConfirmView, PasswordResetCompleteView
-from django.urls import path
+from django.urls import path, include
 from django.views.generic import TemplateView
 from django_registration.backends.activation.views import RegistrationView, ActivationView
 
@@ -30,5 +30,5 @@ urlpatterns = [
          ActivationView.as_view(template_name='registration/activation_failed.html'),
          name="django_registration_activate"),
 
-
+    path('', include('social_django.urls', namespace='social'))
 ]

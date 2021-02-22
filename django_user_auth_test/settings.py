@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'django_registration',
     'crispy_forms',
     'captcha',
+    'social_django',
+
 ]
 
 MIDDLEWARE = [
@@ -76,6 +78,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -116,7 +120,14 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
-AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
+SOCIAL_AUTH_USER_MODEL = 'accounts.User'
+
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend'
+]
+
 ACCOUNT_ACTIVATION_DAYS = 7
 
 # Internationalization
@@ -149,3 +160,6 @@ AUTH_USER_EMAIL_UNIQUE = True
 
 RECAPTCHA_PUBLIC_KEY = env('RECAPTCHA_PUBLIC_KEY')
 RECAPTCHA_PRIVATE_KEY = env('RECAPTCHA_PRIVATE_KEY')
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = env('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
