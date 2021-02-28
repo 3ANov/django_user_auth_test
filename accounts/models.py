@@ -10,9 +10,6 @@ class UserAccountManager(BaseUserManager):
         if not email:
             raise ValueError('Email address must be provided')
 
-        if not password:
-            raise ValueError('Password must be provided')
-
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
